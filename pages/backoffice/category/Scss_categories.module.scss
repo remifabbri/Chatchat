@@ -1,0 +1,128 @@
+@import '../../../styles/mixin';
+
+.blockCategory{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; 
+    position: relative;
+    height: 35px; 
+    width: 100%;
+    border: 1px solid cornflowerblue; 
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    
+    .buttonEdit{
+        position: absolute; 
+        top: 0; 
+        right: 35px;
+        bottom: 0;
+        border: none;
+        background: transparent;
+        display: flex; 
+        flex-flow: row nowrap;
+        align-items: center;
+
+        img{
+            height: 75%;
+        }
+    }
+
+    .buttonDelete{
+        position: absolute; 
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        border: none;
+        background: transparent;
+        display: flex; 
+        flex-flow: row nowrap;
+        align-items: center;
+
+        img{
+            height: 75%;
+        }
+    }
+}
+
+
+.btnAddCategory{
+    height: 20px; 
+    width: 100%;
+    border: 1px solid cornflowerblue;
+    background-color: cornflowerblue;
+    border-radius: 7px;
+    padding: 2px 2px;
+    color: white;
+}
+
+// .effetBtnAddCategory{
+//    margin-top: -25px; 
+// }
+
+.listCategory{
+    margin-top:20px;
+
+    .blockCategory{
+        margin-top: 5px;
+    }
+
+    .listSubCategory {
+        margin-left: 25px;
+    }
+    .btnAddCategory{
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        margin-left: 25px;
+        width: calc(100% - 35px);
+    }
+}
+
+
+
+.modalGetCat{
+    position: fixed;
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    @include BgColorBlur_Dft;
+    z-index: 10000000000000; 
+    
+
+    .blockModalGetCat{
+        position: absolute;
+        top: 50%;
+        left: 50%; 
+        height: max-content; 
+        width: 90%; 
+        padding: 25px;
+        transform: translate(-50%, -50%);
+        background-color: cornsilk;
+        border-radius: 25px;
+
+        p{
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input{
+            border: 1px solid cornflowerblue; 
+            border-radius: 7px;
+            width: 100%; 
+            padding: 5px;
+
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+    .btnModal{
+        display: flex; 
+        flex-flow: row nowrap; 
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 25px;
+    }
+}

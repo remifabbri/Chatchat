@@ -1,0 +1,231 @@
+@import '../../../styles/mixin';
+
+.blockForm{
+    position: absolute; 
+    top: 50%; 
+    
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    @include shadowModal;
+    @include BgColorBlur_Dft;
+
+    @media (max-width: 640px){
+        width: 80%;
+    }
+}
+
+.rowTitleButton{
+    display: flex; 
+    flex-flow: row nowrap; 
+    justify-content: space-between;
+}
+
+.rowActionButton{
+    position: fixed; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    display: flex; 
+    flex-flow: row nowrap; 
+    justify-content: space-between;
+    background-color: white;
+    @include shadowActionBottom;
+    padding: 0px 10px;
+}
+
+.headerTableauProduct{
+    display: flex; 
+    flex-flow: row nowrap; 
+    justify-content: space-between; 
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+
+    div{
+        flex: 1;
+    }
+}
+
+.blockProduct{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: space-between;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: $fontColor;
+    // @include BgColor_grayScale;
+    @include BgColorLight_Dft; 
+    
+    &:hover{
+        @include BgColor_Dft; 
+        color: white; 
+        // transform: scale(1.05);
+    }
+
+    .blockImg{
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        height: 100px; 
+        width: 100px; 
+        background-color: white;
+        border-radius: 10px;
+        margin-right: 15px;
+
+        img{
+            padding: 5px; 
+            max-height: 100%;
+            max-width: 100%;    
+            
+        }
+    }
+
+    .blockElement{
+        width: 100%;
+
+        .titre{
+            span{
+                font-weight: bold;
+            }
+        }
+
+        .rowsElement{
+            display: flex; 
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; 
+            height: 70%;
+
+            span{
+                text-align: center;
+            }
+        }
+        
+    }
+
+    span{
+        flex: 1;
+    }
+
+    .col{
+        display: flex;
+        flex-flow: column nowrap;
+        flex:4;
+
+        .row{
+            display:flex; 
+            flex-flow: row nowrap;
+        }
+
+        span{
+            font-size: 18px;
+            margin: 5px; 
+        }
+    }
+    .classLevel{
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+}
+
+.tableauBoutique{
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.buttonTableau{
+    height: 35px;
+    width: 100%;
+    display: flex; 
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $primColor; 
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 10px 0px; 
+    background-color: $primColor;
+    color: white;
+
+    &:hover{
+        -webkit-box-shadow: inset 0px 0px 15px -5px #000000; 
+        box-shadow: inset 0px 0px 15px -5px #000000;
+    }
+    
+}
+
+.green{
+    color: green ;
+}
+.red{
+    color: red ;
+}
+
+
+.blockAttributs{
+    display: flex; 
+    flex-flow: column nowrap;
+    margin-bottom: 20px;
+
+    .labelTitre{
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.formAttributs{
+    display: flex; 
+    flex-flow: row nowrap; 
+    align-items: center;
+
+    input{
+        padding: 5px;
+        height: 30px;
+        border : 1px solid rgb(96, 99, 97);
+        border-radius: 5px;
+        flex: 5;
+    }
+    button{
+        flex: 2;
+        margin-left: 20px; 
+    }
+}
+
+.tabAttributs{
+    display: flex; 
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 35px;
+    
+
+    label{
+        min-width: 75px;
+        flex: 5; 
+    }
+    input{
+        padding: 5px;
+        height: 30px;
+        border : 1px solid rgb(96, 99, 97);
+        border-radius: 5px;
+        flex: 5; 
+
+    }
+    button{
+        flex: 2;
+        padding: 1px 4px;
+        margin-left: 20px; 
+    }
+    
+}

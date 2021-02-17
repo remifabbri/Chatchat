@@ -1,0 +1,174 @@
+@import '../mixin';
+
+.mainBlock{
+    height: 40px;
+    width: 100%; 
+    background-color: green;
+}
+
+.modalCrud{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    z-index: 100000000000;
+}
+
+.headerModal{
+    display: flex; 
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    height: 50px;
+
+    p{
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    button{
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-weight: 800;
+        border: 1px solid red; 
+        background-color: transparent; 
+    }
+}
+
+.blockInput{
+    margin: 20px 0px;
+}
+
+.blockTransfert{
+    display: flex; 
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 20px 0px; 
+
+    p{
+        font-size: 20px; 
+        font-weight: 600;
+    }
+
+    img{
+        max-height: 50%;
+        max-width: 100%;
+        margin: 10px auto; 
+    }
+
+    span{
+        width: 100%;
+    }
+
+    input{
+       padding: 5px;
+       width: 100%; 
+    }
+
+    button{
+        height: 35px; 
+        width: 100%;
+        border:2px solid $primColor; 
+        border-radius: 10px;
+        font-size: 14px;
+        // font-weight: bold;
+        margin: 10px 0px; 
+        background-color: $primColor;
+        color: white;
+        // @include BgColor_Dft;
+
+        &:hover{
+            -webkit-box-shadow: inset 0px 0px 15px -5px #000000; 
+            box-shadow: inset 0px 0px 15px -5px #000000;
+        }
+    }
+    
+}
+
+.blockImg{
+    display: flex; 
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    p{
+        font-size: 20px; 
+        font-weight: 600;
+        width: 100%;
+    }
+}
+
+
+
+.imgBlockBibli{
+    position: relative;
+    height: 175px;
+    margin: 10px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); 
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+    img{
+        height: 100%;
+    }
+
+    button{
+        position: absolute; 
+        bottom: 0px; 
+        left: 0px;
+        background-color: white;
+        padding: 5px;
+        color: brown;
+        border: 1px solid brown; 
+    }
+}
+
+
+.blockImgSelection{
+    display: flex; 
+    flex-flow: row wrap;
+    margin: 20px 0;
+
+    .imgBlockBibli{
+        height: 150px;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); 
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+        margin: 10px; 
+    }
+
+    .imgBlibli{
+        
+    }
+
+    .buttonAddPhoto{
+        display: flex; 
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 150px;
+        border: 2px dashed grey;
+        border-radius: 10px;
+        margin: 10px;
+        min-width: 100px;
+
+        img{
+            width: 75%; 
+            filter: invert(48%) brightness(118%) ;
+
+        }
+
+        span{
+            margin: 5px;
+            font-weight: bold;
+            color:gray;
+        }
+    }
+
+}

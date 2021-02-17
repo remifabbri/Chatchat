@@ -1,0 +1,148 @@
+// color Gradiant https://uigradients.com/#Dawn
+// $primColor: #3fada8;
+$primColor: #4568bc; 
+// $primColorRGBA: rgba(63, 173, 168, 0.5);
+$primColorRGBA: rgba(176, 106, 179, 0.5);
+
+// $secondColor : #fceabb;
+$secondColor :  #b06ab3;
+// $secondColorRGBA: rgba(252, 234, 187, 0.5);
+$secondColorRGBA: rgba(69, 104, 188, 0.5); 
+$fontColor: #313936;
+$colorCancel : #CB525D;
+$blackSatComp : #302823;
+
+$primGrayColor: #D6D6D6; 
+$secondGrayColor: #FCFCFC; 
+
+$mediaMaxWidth: 640px; 
+
+
+
+@mixin BgColor_Dft() {
+    background: $primColor; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primColor, $secondColor); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primColor,$secondColor);  
+}
+
+@mixin BgColor_grayScale() {
+    background: $primGrayColor; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primGrayColor, $secondGrayColor); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primGrayColor,$secondGrayColor);  
+}
+
+@mixin BgColorLight_Dft() {
+    background: $primColorRGBA; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primColorRGBA, $secondColorRGBA); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primColorRGBA,$secondColorRGBA);
+}
+
+@mixin BgColorBlur_Dft() {
+    background: $primColorRGBA; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right bottom, $primColorRGBA, $secondColorRGBA); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right bottom,$primColorRGBA,$secondColorRGBA);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);  
+}
+
+@mixin shadowModal(){
+    -webkit-box-shadow: 0px 0px 10px 10px rgba(18,33,0,0.25); 
+    box-shadow: 0px 0px 10px 10px rgba(18,33,0,0.25);
+}
+
+@mixin shadowActionBottom(){
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(18,33,0,0.25); 
+    box-shadow: 0px 0px 10px 5px rgba(18,33,0,0.25);
+}
+
+@mixin gradient-box {
+  
+    //width: 50vw;
+    max-width: 22em;
+    position: relative;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    $border: 2px;
+    color: #000;
+    background: #fff;
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+    border-radius: 100px;
+  
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(to right, $primColor, $secondColor);
+    }
+
+    &:hover{
+        background: linear-gradient(to right, $primColor, $secondColor);
+        color: #fff;
+        text-decoration: none;
+        transform: scale(1);
+    }
+}
+
+
+@mixin gradient-box-selected {
+  
+    //width: 50vw;
+    max-width: 22em;
+    position: relative;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    $border: 2px;
+    color: #fff;
+    background: linear-gradient(to right, $primColor, $secondColor);
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+    border-radius: 100px;
+    text-decoration: none;
+    transform: scale(1);
+  
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(to right, $primColor, $secondColor);
+    }
+}
+
+
+
+  @mixin gradient-box-circle {
+  
+    //width: 50vw;
+
+    position: relative;
+    box-sizing: border-box;
+    $border: 2px;
+    color: #000;
+    background: #fff;
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+  
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(to right, $primColor, $secondColor);
+    }
+
+    &:hover{
+        background: linear-gradient(to right, $primColor, $secondColor);
+        color: #fff;
+        text-decoration: none;
+        transform: scale(1);
+    }
+  }

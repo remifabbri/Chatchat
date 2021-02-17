@@ -1,0 +1,19 @@
+.mainBlock{
+    display: flex; 
+    flex-flow: column nowrap; 
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    background-color: #F0F5ED;
+    border-radius: 10px;
+    
+    div{
+        margin-bottom: 10px;
+    }
+
+    .linkBtn{
+        font-size: 10px; 
+    }
+}
