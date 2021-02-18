@@ -207,14 +207,19 @@
 
         .navMenu{
             height: calc(100% - 50px);
-            width: 75%;
+            width: 33%;
             border-top-right-radius:30px;
             border-bottom-right-radius:30px;
             // background: rgb(109,62,161);
             // // background: linear-gradient(125deg, rgba(109,62,161,0.5032387955182073) 10%, rgba(56,70,207,0.43601190476190477) 50%, rgba(52,170,213,0.5) 90%);
             // background: linear-gradient(125deg, rgba(109,62,161,0.5) 10%, rgba(56,70,207,0.5) 50%, rgba(52,170,213,0.5) 90%);
             // // @include BgColor_Dft;
-            @include BgColorBlur_Dft;
+            // @include BgColorBlur_Dft;
+            @include BgWhiteBlur_Dft;
+
+            @media(max-width:640px){
+                width: 75%;
+            }
 
             
             // @media(max-width:640px){
@@ -222,7 +227,7 @@
                 top: 50px; 
                 left: 0px;
                 transform-origin: 0% 0%;
-                transform: translate(-100%, 0); 
+                transform: translate(calc(-100% + 66px), 0); 
                 transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); 
             // }
         
@@ -236,6 +241,9 @@
                     justify-content: flex-start;
                     align-items: center;
                     height: 100%;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
                 // }
         
                 li{

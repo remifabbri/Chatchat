@@ -5,6 +5,7 @@ import Link from 'next/link'
 import fire from '../config/firebase-config';
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth'
+import CreateConv from '../components/createGroupConv';
 import ListGroupConv from './ListGroupConv'
 
 const logoName = 'logo ChatChat'
@@ -14,7 +15,11 @@ export default function Layout({ children, home, backOffice }) {
     const auth = useAuth();
     const user = auth.user; 
     // console.log(user);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
+    const toggleCallback = (t) => {
+        setToggleMenu(t); 
+    }
     // console.log('layout user', user);
 
     return (
@@ -52,15 +57,15 @@ export default function Layout({ children, home, backOffice }) {
                         </Link>
                     </div>
                     <div className={`${styles.blockActionToggle} ${styles.navMobile}`}>
-                        <input type="checkbox" className={styles.actionToggle} />
+                        <input type="checkbox" checked={toggleMenu} onClick={(e) => setToggleMenu(!toggleMenu)} className={styles.actionToggle} />
                         <div className={styles.blockImgActionToggle}>
                             <div className={styles.imageActionToggle}></div>
                         </div>
                         <nav className={`${styles.navMenu}`}>
                             <ul className={`${styles.menuLayout}`}>
-
+                                <CreateConv/>
                                 {user && 
-                                    <ListGroupConv/>
+                                    <ListGroupConv toggleCallback={toggleCallback}/>
                                 }
                                
                             </ul>

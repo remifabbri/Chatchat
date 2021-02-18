@@ -2,6 +2,8 @@ import { set } from 'date-fns';
 import React, { useState, useEffect } from 'react';
 import { fire, auth, storage, db } from '../config/firebase-config';
 import { useAuth } from '../hooks/useAuth'; 
+import styles from '../styles/component/createGroupConv.module.scss';
+
 
 export default function CreateGroupConv({parentCallback, props}) {
     const auth = useAuth();
@@ -19,20 +21,22 @@ export default function CreateGroupConv({parentCallback, props}) {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fire
-        .firestore()
-        .collection('users')
-        .get()
-        .then((querySnapshot) => {
-            let usersDb = [];
-            querySnapshot.forEach((doc) => {
-                if(doc.id !== user.uid){
-                    usersDb.push(doc.data()); 
-                }
+        if(user){
+            fire
+            .firestore()
+            .collection('users')
+            .get()
+            .then((querySnapshot) => {
+                let usersDb = [];
+                querySnapshot.forEach((doc) => {
+                    if(doc.id !== user.uid){
+                        usersDb.push(doc.data()); 
+                    }
+                })
+                setUsers(usersDb);
+                setUsersFind(usersDb);
             })
-            setUsers(usersDb);
-            setUsersFind(usersDb);
-        })
+        }
     }, []);
 
     const handleSearchUsers = async(e) => {
@@ -157,13 +161,16 @@ export default function CreateGroupConv({parentCallback, props}) {
     
 
     return(
-        <div>
+        <div className={styles.blockCreateGroupeConv}>
 
-            <button onClick={(e) => {e.preventDefault(); setToggle(true)}}>Créer un groupe</button>
+            <button onClick={(e) => {e.preventDefault(); setToggle(true)}} className={styles.btnCreateConv}>
+                <span>créer une conversation</span>
+                <img src='images/icons/addConv.svg'/>
+            </button>
 
 
             { toggle && 
-                <div>
+                <div className={styles.blockModalCreatConv}>
                     <h2>Créer une conversation</h2>
             
                     <input value={searchUsers} placeholder={'Rechercher'} onChange={(e) =>  handleSearchUsers(e)}/>

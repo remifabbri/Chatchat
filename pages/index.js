@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react';
 import fire from '../config/firebase-config';
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.scss'
-import stylesBoutique from '../styles/page/boutiqueClient.module.scss'
-import Link from 'next/link'
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
+import utilStyles from '../styles/utils.module.scss';
 import { useAuth } from '../hooks/useAuth'; 
-import NeedLog from '../components/needLog'
-import CreateConv from '../components/createGroupConv';
-import ListGroupConv from '../components/ListGroupConv'
+import NeedLog from '../components/needLog';
 
-
-
+import MessageConv from '../components/messageConv';
 
 export default function Home({allPostsData}) {
   const auth = useAuth();
@@ -45,8 +40,7 @@ export default function Home({allPostsData}) {
               <NeedLog/>
             :  
             <>
-              <CreateConv/>
-              {/* <ListGroupConv/> */}
+              <MessageConv/>
             </>
           }
         </section>
