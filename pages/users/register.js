@@ -66,12 +66,12 @@ const Register = () => {
             <label for="name" className={utilStyles.form__label}>Email</label>
           </div>
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
-            <input type="input" className={utilStyles.form__field} placeholder="Password" value={password} 
+            <input type="password" className={utilStyles.form__field} placeholder="Password" value={password} 
               onChange= {({target}) => setPassword(target.value)} required />
             <label for="name" className={utilStyles.form__label}>Password</label>
           </div>
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
-            <input type="input" className={utilStyles.form__field} placeholder="Password conf" value={passConf} 
+            <input type="password" className={utilStyles.form__field} placeholder="Password conf" value={passConf} 
               onChange= {({target}) => setPassConf(target.value)} required />
             <label for="name" className={utilStyles.form__label}>Password conf</label>
           </div>

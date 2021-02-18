@@ -5,9 +5,10 @@ import Link from 'next/link'
 import fire from '../config/firebase-config';
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth'
+import ListGroupConv from './ListGroupConv'
 
-const logoName = 'logo RFCompagny'
-export const siteTitle = 'RFCompagny'
+const logoName = 'logo ChatChat'
+export const siteTitle = 'Chatchat'
 
 export default function Layout({ children, home, backOffice }) {
     const auth = useAuth();
@@ -22,7 +23,7 @@ export default function Layout({ children, home, backOffice }) {
             <link rel="icon" href="/favicon.ico" />
             <meta
             name="description"
-            content="Learn how to build a personal website using Next.js"
+            content="Chat with your friends"
             />
             <meta
             property="og:image"
@@ -57,42 +58,16 @@ export default function Layout({ children, home, backOffice }) {
                         </div>
                         <nav className={`${styles.navMenu}`}>
                             <ul className={`${styles.menuLayout}`}>
-                                <li>
-                                <Link href="/">
-                                    <a>Accueil</a>
-                                </Link>
-                            </li>
-                                <li>
-                                    <Link href="/boutiqueClient/boutique">
-                                        <a>Boutique</a>
-                                    </Link>
-                                </li>
-                                
-                                <li><a href="#Contact">Contact</a></li>
-                                {user?.admin ?
-                                    <ul>
-                                        <li>
-                                            <Link href="/backoffice/boutique/gestionBoutique">
-                                                <a>Gestion Boutique</a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/backoffice/category/gestionCategories">
-                                                <a>Gestion Catégories</a>
-                                            </Link>
-                                        </li>
-                                    </ul>
 
-                                    :
-                                    <>
-                                    </>
-
+                                {user && 
+                                    <ListGroupConv/>
                                 }
+                               
                             </ul>
                         </nav>
                     </div>
 
-                    <nav className={`${styles.navDesktop}`}>
+                    {/* <nav className={`${styles.navDesktop}`}>
                         <ul>
                             <li>
                                 <Link href="/">
@@ -106,7 +81,7 @@ export default function Layout({ children, home, backOffice }) {
                             </li>
                             <li><a href="#Contact">Contact</a></li>
                         </ul>
-                    </nav>
+                    </nav> */}
                     
                 </div>
                 <div className={styles.navRight}>
@@ -121,45 +96,18 @@ export default function Layout({ children, home, backOffice }) {
                         </Link>
                         // <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
                         }
-                        <Link href="/users/panier">
+                        {/* <Link href="/users/panier">
                                 <a type="button" href="#"><img className={`${utilStyles.svgWhite}`} src="/images/shopping_bag.svg"></img></a>
-                        </Link>
+                        </Link> */}
                 </div>
             </div>
             
-            {backOffice && (
-                <main className={`${styles.container} ${styles.containerBO}`}>{children}</main>
-            )}
-            {!backOffice && (
-                <main className={styles.container}>{children}</main>
-            )}
+  
+            <main className={styles.container}>{children}</main>
+          
 
         
-            {backOffice && (
-                <div className={styles.navBackOffice}>
-                    
-                            <Link href="/backoffice/category/gestionCategories">
-                                <div className={styles.itemsNav}>
-                                    <img
-                                        src="/images/icons/category-white.svg"
-                                        alt={logoName}
-                                    />
-                                </div>
-                                
-                            </Link>
-                    
-                            <Link href="/backoffice/boutique/gestionBoutique">
-                                <div className={styles.itemsNav}>
-                                    <img
-                                        src="/images/icons/store-white.svg"
-                                        alt={logoName}
-                                    />
-                                </div>
-                                
-                            </Link>
-                     
-                </div>
-            )}
+            
         </div>
         </>
     )

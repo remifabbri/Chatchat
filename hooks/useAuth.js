@@ -75,7 +75,7 @@ const useAuthProvider = () => {
         .createUserWithEmailAndPassword(email, password)
         .then((response) => {
             auth.currentUser.sendEmailVerification();
-            return createUser({ uid: response.user.uid, email, name });
+            return createUser({ uid: response.user.uid, email, name, pp: 'https://firebasestorage.googleapis.com/v0/b/chatchat-6f3b5.appspot.com/o/ppDefault.svg?alt=media&token=1452ffad-19fd-4a5e-a7a1-5619c212f15f' });
         })
         .catch((error) => {
             return { error };
@@ -113,7 +113,8 @@ const useAuthProvider = () => {
           .signInWithPopup(new fire.auth.GoogleAuthProvider())
           .then((response) => {
               setUser(response.user);
-              return createUser({ uid: response.user.uid, email :response.user.email, name: response.user.displayName });
+              console.log(response.user);
+              return createUser({ uid: response.user.uid, email :response.user.email, name: response.user.displayName , pp: response.user.photoURL  });
         });
     };
 
