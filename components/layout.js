@@ -5,7 +5,7 @@ import Link from 'next/link'
 import fire from '../config/firebase-config';
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth'
-import CreateConv from '../components/createGroupConv';
+import CreateConv from '../pages/createGroupConv';
 import ListGroupConv from './ListGroupConv'
 
 const logoName = 'logo ChatChat'
@@ -23,7 +23,7 @@ export default function Layout({ children, home, backOffice }) {
     // console.log('layout user', user);
 
     return (
-        <>
+        <div className={styles.mainContainer}>
         <Head>
             <link rel="icon" href="/favicon.ico" />
             <meta
@@ -63,7 +63,13 @@ export default function Layout({ children, home, backOffice }) {
                         </div>
                         <nav className={`${styles.navMenu}`}>
                             <ul className={`${styles.menuLayout}`}>
-                                <CreateConv/>
+                                <Link href="/createGroupConv">
+                                    <a className={styles.btnCreateConv}>
+                                        <span>créer une conversation</span>
+                                        <img src='images/icons/addConv.svg'/>
+                                    </a>
+                                </Link>
+
                                 {user && 
                                     <ListGroupConv toggleCallback={toggleCallback}/>
                                 }
@@ -114,6 +120,6 @@ export default function Layout({ children, home, backOffice }) {
         
             
         </div>
-        </>
+        </div>
     )
 }

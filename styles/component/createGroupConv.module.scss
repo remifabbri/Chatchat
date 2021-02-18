@@ -1,41 +1,82 @@
 .blockCreateGroupeConv{
-    width: 100%; 
-
-}
-
-.btnCreateConv{
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-end; 
-    width: 100%;
-    height: 66px;
-    background-color: transparent;
-    border-top-right-radius: 100px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 100px;
-    border: none;
-    padding-right: 10px;
-
-
-    span{
-        font-size: 16px;
-        font-weight: 600px;
-        margin-right: 25px;
-    }
-
-    img{
-        max-width: 50px;
-        max-height: 50px;
-    }
-}
-
-.blockModalCreatConv{
-    position: absolute;
-    top: 0px;
-    left: 0px;
     width:100%;
     height: 100%; 
     background-color: white;
+
+    .inputSearchUser{
+        width: 100%; 
+        padding: 5px;
+        border : 1px solid rgb(96, 99, 97);
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .blockSearchUser{
+        height: max-content;
+        max-height: 150px;
+        // border : 1px solid rgb(96, 99, 97);
+        width: 100%;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+        // padding: 10px;
+
+        .itemUser{
+            display: flex; 
+            flex-flow: row nowrap; 
+            align-items: center;
+            height: 35px;
+            width: 100%;
+            border: none;
+            border-radius: 50px;
+            padding: 0px;
+            margin-bottom: 5px;
+            background-color: rgb(237, 240, 241);
+
+            &:hover{
+                background-color: rgb(189, 203, 231);
+            }
+
+
+            img{
+                max-height: 100%;
+                border-radius: 50px ;
+
+            }
+            span{
+                font-size: 14px;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+.blockUserSelected{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: max-content;
+
+    .btnUserSelected{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        border: none;
+        border-radius: 50px;
+        background-color: rgb(237, 240, 241);
+    
+        &:hover{
+            background-color: rgb(189, 203, 231);
+        }
+    
+        p{
+            margin:0;
+            margin-right: 10px;
+        }
+        span{
+            font-size: 18px;
+            font-weight: 800;
+            color: grey;
+        
+        }
+    }
 }

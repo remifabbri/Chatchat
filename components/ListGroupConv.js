@@ -48,11 +48,11 @@ export default function CreateGroupConv({toggleCallback}) {
         <div className={styles.blockListConv}>
             {groupes && groupes.map(g => 
                 <button key={g.id} onClick={(e) => storeIdGroupe(e, g.id)} className={styles.blockItemList}>
+                    
+                    <p>{g.titre}</p>
+                    
                     <div className={styles.blockImg}>
                         <img src={g.ppGroupe[0]}/>
-                    </div>
-                    <div>
-                        <p>{g.titre}</p>
                     </div>
                 </button>
             )}

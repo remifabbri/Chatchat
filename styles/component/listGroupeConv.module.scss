@@ -1,16 +1,30 @@
+@import '../mixin';
+
+
 .blockListConv{
     display: flex; 
     flex-flow: column nowrap; 
-
+    width: 100%;
 }
 
 .blockItemList{
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    justify-content: flex-end;
     width: 100%; 
     height: 50px;
     padding: 5px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: $fontColor;
+    padding-right: 10px;
+    background-color: transparent;
+
+    &:hover{
+        background-color: #b5c8f5;
+    }
     // margin: 5px 0px;
 
     .blockImg{
@@ -20,6 +34,11 @@
         img{
             max-height: 100%;
             max-width: 100%;
+            border-radius: 25px;
         }
+    }
+
+    p{
+        margin-right: 25px;
     }
 }

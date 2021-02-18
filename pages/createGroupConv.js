@@ -1,5 +1,7 @@
 import { set } from 'date-fns';
 import React, { useState, useEffect } from 'react';
+import Layout from '../components/layout';
+import { useRouter } from 'next/router'
 import { fire, auth, storage, db } from '../config/firebase-config';
 import { useAuth } from '../hooks/useAuth'; 
 import styles from '../styles/component/createGroupConv.module.scss';
@@ -8,6 +10,7 @@ import styles from '../styles/component/createGroupConv.module.scss';
 export default function CreateGroupConv({parentCallback, props}) {
     const auth = useAuth();
     const user = auth.user; 
+    const router = useRouter();
 
     const [toggle, setToggle] = useState(false);
 
@@ -155,60 +158,61 @@ export default function CreateGroupConv({parentCallback, props}) {
         setUsersGroup([]);
         setMessage('');
         setToggle(false);
+        router.push('/');
     }
     console.log('RENDER : usersFind', usersFind);
     console.log('RENDER : usersGroup', usersGroup);
     
 
     return(
-        <div className={styles.blockCreateGroupeConv}>
+        <Layout>
+            <div className={styles.blockCreateGroupeConv}>
+                <h2>Créer une conversation</h2>
+        
+                <input value={searchUsers} placeholder={'Rechercher un utilisateur'} onChange={(e) =>  handleSearchUsers(e)} className={styles.inputSearchUser}/>
 
-            <button onClick={(e) => {e.preventDefault(); setToggle(true)}} className={styles.btnCreateConv}>
-                <span>créer une conversation</span>
-                <img src='images/icons/addConv.svg'/>
-            </button>
-
-
-            { toggle && 
-                <div className={styles.blockModalCreatConv}>
-                    <h2>Créer une conversation</h2>
-            
-                    <input value={searchUsers} placeholder={'Rechercher'} onChange={(e) =>  handleSearchUsers(e)}/>
-
+                <div className={styles.blockSearchUser}>
                     {searchUsers !== "" && users ? 
                         usersFind.map( User => 
                             <div key={User.uid}>
-                                <button onClick={(e) => addUsersToGroupConv(e, User)}>{User.name}</button>
+                                <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
+                                    <img src={User.pp}/>
+                                    <span>{User.name}</span>
+                                </button>
                             </div>
                         )
                         :
                         users.map( User => 
-                            <div key={User.uid}>
-                                <button onClick={(e) => addUsersToGroupConv(e, User)}>{User.name}</button>
-                        </div>
+                            <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
+                                <img src={User.pp}/>
+                                <span>{User.name}</span>
+                            </button>
                         )
                     }
-
-                    <label>Groupe</label>
-                    {usersGroup && usersGroup.map( ug => 
-                        <div key={ug.uid}>
-                                <span>{ug.name}</span>
-                                <button onClick={(e) => deleteUsersToGroupConv(e, ug)}>Supprimer</button>
-                        </div>
-                    )}
-                    
-                    <input value={titre} placeholder='Donner un titre à votre conversation' onChange={(e) => setTitre(e.target.value)}/>
-
-                    <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
-                    
-                    <div>
-                        <button onClick={(e) => cancelCreateGroup(e) }>Annuler</button>
-                        <button onClick={(e) => createAndSendMessageToGroup(e) }>Envoyer</button>
-                    </div>
                 </div>
-            }
 
-        </div>
+                
+                {usersGroup && 
+                    <div className={styles.blockUserSelected}>
+                        {usersGroup.map( ug => 
+                            <button key={ug.uid} onClick={(e) => deleteUsersToGroupConv(e, ug)} className={styles.btnUserSelected}>
+                                <p>{ug.name}</p>
+                                <span>X</span>
+                            </button>
+                        )}
+                    </div>
+                }
+                
+                <input value={titre} placeholder='Donner un titre à votre conversation' onChange={(e) => setTitre(e.target.value)}/>
+
+                <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
+                
+                <div>
+                    <button onClick={(e) => cancelCreateGroup(e) }>Annuler</button>
+                    <button onClick={(e) => createAndSendMessageToGroup(e) }>Envoyer</button>
+                </div>
+            </div>
+        </Layout>
     )
 
 }
