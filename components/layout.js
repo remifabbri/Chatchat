@@ -66,7 +66,7 @@ export default function Layout({ children, home, backOffice }) {
                                 <Link href="/createGroupConv">
                                     <a className={styles.btnCreateConv}>
                                         <span>créer une conversation</span>
-                                        <img src='images/icons/addConv.svg'/>
+                                        <img src='/images/icons/addConv.svg'/>
                                     </a>
                                 </Link>
 
