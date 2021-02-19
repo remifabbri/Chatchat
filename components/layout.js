@@ -50,7 +50,7 @@ export default function Layout({ children, home, backOffice }) {
                         <Link href="/">
                             <a>
                                 <img
-                                    src="/images/icons/LogoChatchat.svg"
+                                    src="/images/icons/logoChatchat.svg"
                                     alt={logoName}
                                 />
                             </a>
