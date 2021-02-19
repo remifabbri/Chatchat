@@ -37,7 +37,7 @@ const Login = () => {
         {notify}
         <div className={utilStyles.styleHr}></div>
         <h3>Sign in with social média</h3>
-        <button className={utilStyles.signGoogle} onClick={signInWithGoogle}></button>
+        <button className={utilStyles.signGoogle} onClick={(e) => signInWithGoogle(e)}></button>
         <div className={utilStyles.styleHr}></div>
         <h3>sign in with your Email/Password</h3>
         <form onSubmit={handleLogin} className={utilStyles.formDefault} >

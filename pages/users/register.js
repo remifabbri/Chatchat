@@ -51,7 +51,7 @@ const Register = () => {
         {notification}
         <div className={utilStyles.styleHr}></div>
         <h3>Sign up with social média</h3>
-        <button className={utilStyles.signGoogle} onClick={signUpWithGoogle}></button>
+        <button className={utilStyles.signGoogle} onClick={(e) => signUpWithGoogle(e)}></button>
         <div className={utilStyles.styleHr}></div>
         <h3>create a traditional account</h3>
         <form onSubmit={handleLogin} className={utilStyles.formDefault} >
