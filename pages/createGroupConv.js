@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 import { fire, auth, storage, db } from '../config/firebase-config';
 import { useAuth } from '../hooks/useAuth'; 
 import styles from '../styles/component/createGroupConv.module.scss';
+import utilStyles from '../styles/utils.module.scss';
+import { useStore } from '../hooks/useStore'; 
 
 
 export default function CreateGroupConv({parentCallback, props}) {
@@ -12,6 +14,9 @@ export default function CreateGroupConv({parentCallback, props}) {
     const user = auth.user; 
     const router = useRouter();
 
+    const userStore = useStore();
+    const store = userStore.store;
+    
     const [toggle, setToggle] = useState(false);
 
     const [users, setUsers] = useState([]);
@@ -104,7 +109,6 @@ export default function CreateGroupConv({parentCallback, props}) {
         arrPP.push(user.pp);
 
         members.push(user.uid); 
-        console.log('user', user);
 
         let RefidDoc = fire.firestore().collection("Groupe").doc();
 
@@ -130,9 +134,6 @@ export default function CreateGroupConv({parentCallback, props}) {
                     groups: fire.firestore.FieldValue.arrayUnion(RefidDoc.id)
                 });
             })
-
-            console.log('docRef', RefidDoc.id);
-            
         })
         .then(() => {
             fire
@@ -143,9 +144,11 @@ export default function CreateGroupConv({parentCallback, props}) {
             .add({
                 messageText : message, 
                 sentAt : fire.firestore.Timestamp.fromDate(new Date()),
-                sentBy : user.uid
+                sentBy : user.uid,
+                userPP : user.pp
             })
             .then(() => {
+                userStore.handleChangeIDGroupe(RefidDoc.id);
                 cleanHookState();
             })
         });
@@ -160,10 +163,7 @@ export default function CreateGroupConv({parentCallback, props}) {
         setToggle(false);
         router.push('/');
     }
-    console.log('RENDER : usersFind', usersFind);
-    console.log('RENDER : usersGroup', usersGroup);
     
-
     return(
         <Layout>
             <div className={styles.blockCreateGroupeConv}>
@@ -202,14 +202,18 @@ export default function CreateGroupConv({parentCallback, props}) {
                         )}
                     </div>
                 }
-                
-                <input value={titre} placeholder='Donner un titre à votre conversation' onChange={(e) => setTitre(e.target.value)}/>
+                <div className={styles.blockText}>
+                    
+                    <input value={titre} placeholder='Donner un titre à votre conversation (optionel)' onChange={(e) => setTitre(e.target.value)} />
 
-                <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
+                    <label>Message</label>
+                    <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
+
+                </div>
                 
-                <div>
-                    <button onClick={(e) => cancelCreateGroup(e) }>Annuler</button>
-                    <button onClick={(e) => createAndSendMessageToGroup(e) }>Envoyer</button>
+                <div className={styles.rowActionButton}>
+                    <button onClick={(e) => cancelCreateGroup(e) } className={`${utilStyles.ActionButtonCancel}`}>Annuler</button>
+                    <button onClick={(e) => createAndSendMessageToGroup(e) } className={utilStyles.ActionButtonAdd}>Envoyer</button>
                 </div>
             </div>
         </Layout>

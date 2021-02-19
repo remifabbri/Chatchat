@@ -26,8 +26,6 @@ export default function Home({allPostsData}) {
         setBoutique(snapBoutique);
       });
   }, []);
-
-  console.log('controle Boutique', Boutique);
   
   return (
     <Layout home>
@@ -39,9 +37,9 @@ export default function Home({allPostsData}) {
             ? 
               <NeedLog/>
             :  
-            <>
+          
               <MessageConv/>
-            </>
+            
           }
         </section>
     </Layout>

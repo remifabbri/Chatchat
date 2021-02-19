@@ -14,8 +14,6 @@ const ResetPasswordForm = () => {
 
         auth.sendPasswordResetEmail(email)
         .then(()=>{
-            console.log("before router.push()")
-            debugger
             router.push('/users/login');
         })
     };

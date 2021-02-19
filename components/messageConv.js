@@ -1,14 +1,17 @@
 import { set } from 'date-fns';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { fire, auth, storage, db } from '../config/firebase-config';
 import { useAuth } from '../hooks/useAuth'; 
 import { useStore } from '../hooks/useStore'; 
-
-import styles from '../styles/component/listGroupeConv.module.scss'
+import Link from 'next/link'
+import utilStyles from '../styles/utils.module.scss';
+import styles from '../styles/component/messageConv.module.scss'
 
 export default function MessageConv({parentCallback, props}) {
     const auth = useAuth();
-    const user = auth.user; 
+    const user = auth.user;
+
+    const blockConv = useRef(null);
 
     const userStore = useStore();
     const store = userStore.store;
@@ -17,8 +20,6 @@ export default function MessageConv({parentCallback, props}) {
     const [newMessage, setNewMessage] = useState('');
 
     useEffect(() => {
-
-        console.log(store);
         if(store.idGroupe !== null && user !== null){
             fire
             .firestore()
@@ -38,6 +39,16 @@ export default function MessageConv({parentCallback, props}) {
         }
     }, [store])
 
+    useEffect(() => {
+        if( blockConv.current !== null){
+            console.log(blockConv);
+            console.log(blockConv.current.scrollHeight);
+            // blockConv.current.scrollTop = blockConv.current.scrollHeight;
+            blockConv.current.scrollIntoView({ behavior: 'smooth', block: "end", inline: "nearest"})
+        }
+    });
+
+
     const sendMessage = (e) => {
         e.preventDefault();
 
@@ -50,7 +61,8 @@ export default function MessageConv({parentCallback, props}) {
             .add({
                 messageText: newMessage,
                 sentAt: fire.firestore.Timestamp.fromDate(new Date()),
-                sentBy: user.uid
+                sentBy: user.uid,
+                userPP : user.pp
             })
             .then(() => {
                 setNewMessage('');
@@ -59,27 +71,45 @@ export default function MessageConv({parentCallback, props}) {
 
     }
 
-    console.log('CTRL Messages', messages);
-    console.log('store CTRL', store);
-
-
     return(
-        <>
+        <div className={styles.blockMessageConv}>
         {store.idGroupe === null ? 
-            <p> {`<-- Selectionner une conversation...`}</p>
+            <div className={styles.blockInfo}>
+                <Link href="/createGroupConv">
+                    <a className={styles.btnCreateConv}>
+                        <span>créer une conversation</span>
+                        <img src='images/icons/addConv.svg'/>
+                    </a>
+                </Link>
+                <span>ou</span>
+                <p>Selectionner une conversation...</p>
+            </div>
             :
-            <div className={styles.blockListConv}>
-                {messages && messages.map(m => 
-                    <p>{m.messageText}</p>
+            <div ref={blockConv} className={styles.blockMessage}>
+                {messages && messages.map((m,index) => 
+                    <div key={index}>
+                    {m.sentBy === user.uid ? 
+                        <div  className={styles.messageUser}>
+                            <p>{m.messageText}</p>
+                        </div>
+                        :
+                        <div className={styles.message}>
+                            <img src={m.userPP}></img>
+                            <p>{m.messageText}</p>
+                        </div>
+                    }
+                    </div>
                 )}
-                <div>
-                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)}/>
-                    <button onClick={(e) => sendMessage(e)}>Encoyer</button>
+                <div className={styles.rowActionButton}>
+                    <div className={styles.limiteBlock}>
+                        <textarea type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)}/>
+                        <button onClick={(e) => sendMessage(e)} className={utilStyles.ActionButtonAdd}>Encoyer</button>
+                    </div>
                 </div>
             </div>
 
         }
-        </>
+        </div>
     )
 
 }

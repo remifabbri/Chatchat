@@ -113,7 +113,6 @@ const useAuthProvider = () => {
           .signInWithPopup(new fire.auth.GoogleAuthProvider())
           .then((response) => {
               setUser(response.user);
-              console.log(response.user);
               return createUser({ uid: response.user.uid, email :response.user.email, name: response.user.displayName , pp: response.user.photoURL  });
         });
     };

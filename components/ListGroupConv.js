@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { fire, auth, storage, db } from '../config/firebase-config';
 import { useAuth } from '../hooks/useAuth'; 
 import { useStore } from '../hooks/useStore'; 
+import { useRouter } from 'next/router'
 
 import styles from '../styles/component/listGroupeConv.module.scss'
 
 export default function CreateGroupConv({toggleCallback}) {
     const auth = useAuth();
     const user = auth.user; 
+    const router = useRouter();
 
     const userStore = useStore();
     const store = userStore.store;
@@ -17,7 +19,7 @@ export default function CreateGroupConv({toggleCallback}) {
 
     useEffect(() => {
 
-        console.log(user);
+        // console.log(user);
         fire
         .firestore()
         .collection('Groupe')
@@ -35,14 +37,10 @@ export default function CreateGroupConv({toggleCallback}) {
 
     const storeIdGroupe = (e, id) => {
         e.preventDefault();
-        console.log('GO')
         userStore.handleChangeIDGroupe(id);
         toggleCallback(false);
-        console.log('store CTRL', store);
+        router.push('/');
     }
-
-    console.log('store CTRL', store);
-    console.log('groupes CTRL', groupes);
 
     return(
         <div className={styles.blockListConv}>

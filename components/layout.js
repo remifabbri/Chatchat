@@ -43,14 +43,14 @@ export default function Layout({ children, home, backOffice }) {
             </style>
         </Head>
                 
-        <div className={styles.heigthMax}>  
+        {/* <div className={styles.heigthMax}>   */}
             <div className={`${styles.navLayout}`}>
                 <div className={`${styles.navLeft}`}>
                     <div className={`${styles.navLogo}`}>
                         <Link href="/">
                             <a>
                                 <img
-                                    src="/images/LogoNoName.svg"
+                                    src="/images/icons/LogoChatchat.svg"
                                     alt={logoName}
                                 />
                             </a>
@@ -120,6 +120,6 @@ export default function Layout({ children, home, backOffice }) {
         
             
         </div>
-        </div>
+        // </div>
     )
 }
