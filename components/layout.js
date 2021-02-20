@@ -57,7 +57,7 @@ export default function Layout({ children, home, backOffice }) {
                         </Link>
                     </div>
                     <div className={`${styles.blockActionToggle} ${styles.navMobile}`}>
-                        <input type="checkbox" checked={toggleMenu} onClick={(e) => setToggleMenu(!toggleMenu)} className={styles.actionToggle} />
+                        <input type="checkbox" defaultChecked={toggleMenu} onClick={(e) => setToggleMenu(!toggleMenu)} className={styles.actionToggle} />
                         <div className={styles.blockImgActionToggle}>
                             <div className={styles.imageActionToggle}></div>
                         </div>

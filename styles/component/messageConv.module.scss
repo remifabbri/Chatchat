@@ -96,7 +96,7 @@
     height: max-content;
     padding: 5px;
     // @include shadowActionBottom;
-    z-index: 1000000000000000000;
+    z-index: 10;
     
     .limiteBlock{
         width:66%;
@@ -108,7 +108,7 @@
 
         @media(max-width: 640px){
             width:100%;
-            margin:0px 0px 0px 50px; 
+            margin:0px 0px 0px 65px; 
         }
 
         textarea{
