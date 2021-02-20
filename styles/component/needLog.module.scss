@@ -1,4 +1,9 @@
 .mainBlock{
+    width: 100%; 
+    padding-top: 150px;
+}
+
+.blockLog{
     display: flex; 
     flex-flow: column nowrap; 
     justify-content: center;

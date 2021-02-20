@@ -29,11 +29,14 @@ const profile = () => {
 
     return (
       <Layout backOffice>
+        <div className={utilStyles.margTop}>
+
+        
         <h1> Votre Profile</h1>
         
         {!user
           ? <NeedLog/>
-          :  <>
+          : <>
               <h3>Nom</h3>
               <p>{user.name}</p>
               <h3>Email</h3>
@@ -45,6 +48,7 @@ const profile = () => {
               <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
             </>
         }
+        </div>
       </Layout>
     )
 }
