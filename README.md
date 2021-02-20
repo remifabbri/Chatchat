@@ -1,12 +1,8 @@
-# Template Web with Next.js / Firebase
+# chat en ligne Next.js / Firebase
 
-Create a new web site with next.js for a server-side rendering. 
+### Demo 
 
-Backend management with firebase DB + Auth
-
-## Implementation of the project
-
-### create a firebase project
+http://localhost:3000/
 
 1. Create project https://console.firebase.google.com/
 2. add Apllication for generate a firebaseServiceAccountKey.json
