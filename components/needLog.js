@@ -12,15 +12,15 @@ export default function NeedLog() {
         <div className={styleNL.blockLog}>
           <div className={`${utilStyles.btnGroup}`} role="group" aria-label="Call to action">            
               <Link href="/users/register">
-                  <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignUp</a>
+                  <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">Créer un compte</a>
               </Link>  
               {/* <span className={`${utilStyles.btnCircle} ${utilStyles.btnOr}`}>or</span> */}
               <Link href="/users/login">
-                  <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">SignIn</a>
+                  <a type="button" className={`${utilStyles.ButtonAhref}`} href="#">Connexion</a>
               </Link>
           </div>
           <Link href="/users/resetpassword">
-            <a className={`${styleNL.linkBtn}`}>forgot your password ?</a>
+            <a className={`${styleNL.linkBtn}`}>Mot de passe oublié?</a>
           </Link>
         </div>
       </div>

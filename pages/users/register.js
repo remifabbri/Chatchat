@@ -47,18 +47,18 @@ const Register = () => {
     <div className={utilStyles.signSection}>
       <div className={utilStyles.bgSignSection}></div>
       <div className={utilStyles.signBlock}>
-        <h1>Create your account</h1>
+        <h1>Créer un compte</h1>
         {notification}
         <div className={utilStyles.styleHr}></div>
-        <h3>Sign up with social média</h3>
+        <h3>Réseaux sociaux</h3>
         <button className={utilStyles.signGoogle} onClick={(e) => signUpWithGoogle(e)}></button>
         <div className={utilStyles.styleHr}></div>
-        <h3>create a traditional account</h3>
+        <h3>Email et Mot de passe</h3>
         <form onSubmit={handleLogin} className={utilStyles.formDefault} >
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
-            <input type="input" className={utilStyles.form__field} placeholder="Name" value={name} 
+            <input type="input" className={utilStyles.form__field} placeholder="Nom" value={name} 
               onChange={({target}) => setname(target.value)} required />
-            <label for="name" className={utilStyles.form__label}>Name</label>
+            <label for="name" className={utilStyles.form__label}>Nom</label>
           </div>
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
             <input type="input" className={utilStyles.form__field} placeholder="Email" value={email} 
@@ -66,17 +66,17 @@ const Register = () => {
             <label for="name" className={utilStyles.form__label}>Email</label>
           </div>
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
-            <input type="password" className={utilStyles.form__field} placeholder="Password" value={password} 
+            <input type="password" className={utilStyles.form__field} placeholder="Mot de passe" value={password} 
               onChange= {({target}) => setPassword(target.value)} required />
-            <label for="name" className={utilStyles.form__label}>Password</label>
+            <label for="name" className={utilStyles.form__label}>Mot de passe</label>
           </div>
           <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
-            <input type="password" className={utilStyles.form__field} placeholder="Password conf" value={passConf} 
+            <input type="password" className={utilStyles.form__field} placeholder="Confirmer mot de passe" value={passConf} 
               onChange= {({target}) => setPassConf(target.value)} required />
-            <label for="name" className={utilStyles.form__label}>Password conf</label>
+            <label for="name" className={utilStyles.form__label}>Mot de passe</label>
           </div>
           <button type="submit" className={utilStyles.ActionButton}>
-            Login
+            Connexion
           </button>
         </form>
       </div>

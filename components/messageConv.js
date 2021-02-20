@@ -77,12 +77,12 @@ export default function MessageConv({parentCallback, props}) {
             <div className={styles.blockInfo}>
                 <Link href="/createGroupConv">
                     <a className={styles.btnCreateConv}>
-                        <span>créer une conversation</span>
+                        <span>Créer une conversation</span>
                         <img src='images/icons/addConv.svg'/>
                     </a>
                 </Link>
                 <span>ou</span>
-                <p>Selectionner une conversation...</p>
+                <p>Sélectionner une conversation...</p>
             </div>
             :
             <div ref={blockConv} className={styles.blockMessage}>
@@ -103,7 +103,7 @@ export default function MessageConv({parentCallback, props}) {
                 <div className={styles.rowActionButton}>
                     <div className={styles.limiteBlock}>
                         <textarea type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)}/>
-                        <button onClick={(e) => sendMessage(e)} className={utilStyles.ActionButtonAdd}>Encoyer</button>
+                        <button onClick={(e) => sendMessage(e)} className={utilStyles.ActionButtonAdd}>Envoyer</button>
                     </div>
                 </div>
             </div>

@@ -65,7 +65,7 @@ export default function Layout({ children, home, backOffice }) {
                             <ul className={`${styles.menuLayout}`}>
                                 <Link href="/createGroupConv">
                                     <a className={styles.btnCreateConv}>
-                                        <span>créer une conversation</span>
+                                        <span>Créer une conversation</span>
                                         <img src='/images/icons/addConv.svg'/>
                                     </a>
                                 </Link>

@@ -22,15 +22,15 @@ const ResetPasswordForm = () => {
         <div className={utilStyles.signSection}>
             <div className={utilStyles.bgSignSection}></div>
             <div className={utilStyles.signBlock}>
-                <h1>Reset Password</h1>
+                <h1>Réinitialiser le mot de passe</h1>
                 {notify}
                 <form onSubmit={onSubmit} className={utilStyles.formDefault} >
                     <div className={`${utilStyles.form__group} ${utilStyles.field}`}>
                         <input type="input" className={utilStyles.form__field} placeholder="Email" value={email} 
                         onChange={({target}) => setEmail(target.value)} required />
-                        <label for="email" className={utilStyles.form__label}>Your Email</label>
+                        <label for="email" className={utilStyles.form__label}>Votre Email</label>
                     </div>
-                    <button type="submit" className={utilStyles.ActionButton}>Send Email</button>
+                    <button type="submit" className={utilStyles.ActionButton}>Envoyer</button>
                 </form>
             </div>
         </div>

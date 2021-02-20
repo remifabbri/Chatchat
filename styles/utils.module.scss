@@ -80,8 +80,12 @@
 .btnGroup{
   width: 220px; 
   display: flex; 
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  align-items: center;
   justify-content: space-between;
+  a{
+    margin-bottom: 15px;
+  }
 }
 
 .svgWhite{
@@ -329,6 +333,9 @@ $gray: #323232;
   background-color: $primColor;
   color: white;
   // @include BgColor_Dft;
+  @media (max-width: 640px){
+    width: 100px;
+  }
 
   &:hover{
     -webkit-box-shadow: inset 0px 0px 15px -5px #000000; 
@@ -367,6 +374,10 @@ $gray: #323232;
   background: transparent;
   color: $colorCancel;
   // @include BgColor_Dft;
+
+  @media (max-width: 640px){
+    width: 100px;
+  }
 
   &:hover{
     background-color: $colorCancel;

@@ -32,20 +32,21 @@ const profile = () => {
         <div className={utilStyles.margTop}>
 
         
-        <h1> Votre Profile</h1>
+        
         
         {!user
           ? <NeedLog/>
           : <>
+            <h1> Votre Profil</h1>
               <h3>Nom</h3>
               <p>{user.name}</p>
               <h3>Email</h3>
               <p>{user.email}</p>
               <h2>Option de gestion</h2>
               <Link href="/users/resetpassword">
-                <a>Changé le mot de passe de son compte</a>
+                <a>Changer le mot de passe de votre compte</a>
               </Link>
-              <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Logout</button>
+              <button className={`${utilStyles.ButtonAhref}`} onClick={handleLogout}>Déconnexion</button>
             </>
         }
         </div>

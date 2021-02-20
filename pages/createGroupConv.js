@@ -7,6 +7,7 @@ import { useAuth } from '../hooks/useAuth';
 import styles from '../styles/component/createGroupConv.module.scss';
 import utilStyles from '../styles/utils.module.scss';
 import { useStore } from '../hooks/useStore'; 
+import NeedLog from '../components/needLog';
 
 
 export default function CreateGroupConv({parentCallback, props}) {
@@ -166,56 +167,64 @@ export default function CreateGroupConv({parentCallback, props}) {
     
     return(
         <Layout>
-            <div className={styles.blockCreateGroupeConv}>
-                <h2>Créer une conversation</h2>
-        
-                <input value={searchUsers} placeholder={'Rechercher un utilisateur'} onChange={(e) =>  handleSearchUsers(e)} className={styles.inputSearchUser}/>
 
-                <div className={styles.blockSearchUser}>
-                    {searchUsers !== "" && users ? 
-                        usersFind.map( User => 
-                            <div key={User.uid}>
+            {!user
+            ? 
+              <NeedLog/>
+            :  
+                <div className={styles.blockCreateGroupeConv}>
+                    <h2>Créer une conversation</h2>
+            
+                    <input value={searchUsers} placeholder={'Rechercher un utilisateur'} onChange={(e) =>  handleSearchUsers(e)} className={styles.inputSearchUser}/>
+
+                    <div className={styles.blockSearchUser}>
+                        {searchUsers !== "" && users ? 
+                            usersFind.map( User => 
+                                <div key={User.uid}>
+                                    <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
+                                        <img src={User.pp}/>
+                                        <span>{User.name}</span>
+                                    </button>
+                                </div>
+                            )
+                            :
+                            users.map( User => 
                                 <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
                                     <img src={User.pp}/>
                                     <span>{User.name}</span>
                                 </button>
-                            </div>
-                        )
-                        :
-                        users.map( User => 
-                            <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
-                                <img src={User.pp}/>
-                                <span>{User.name}</span>
-                            </button>
-                        )
-                    }
-                </div>
-
-                
-                {usersGroup && 
-                    <div className={styles.blockUserSelected}>
-                        {usersGroup.map( ug => 
-                            <button key={ug.uid} onClick={(e) => deleteUsersToGroupConv(e, ug)} className={styles.btnUserSelected}>
-                                <p>{ug.name}</p>
-                                <span>X</span>
-                            </button>
-                        )}
+                            )
+                        }
                     </div>
-                }
-                <div className={styles.blockText}>
+
                     
-                    <input value={titre} placeholder='Donner un titre à votre conversation (optionel)' onChange={(e) => setTitre(e.target.value)} />
+                    {usersGroup && 
+                        <div className={styles.blockUserSelected}>
+                            {usersGroup.map( ug => 
+                                <button key={ug.uid} onClick={(e) => deleteUsersToGroupConv(e, ug)} className={styles.btnUserSelected}>
+                                    <p>{ug.name}</p>
+                                    <span>X</span>
+                                </button>
+                            )}
+                        </div>
+                    }
+                    <div className={styles.blockText}>
+                        
+                        <input value={titre} placeholder='Donner un titre à votre conversation (optionel)' onChange={(e) => setTitre(e.target.value)} />
 
-                    <label>Message</label>
-                    <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
+                        <label>Message</label>
+                        <textarea rows='5' onChange={(e)=> setMessage(e.target.value)}/>
 
+                    </div>
+                    
+                    <div className={styles.rowActionButton}>
+                        <div className={styles.limiteBlock}>
+                                <button onClick={(e) => cancelCreateGroup(e) } className={`${utilStyles.ActionButtonCancel}`}>Annuler</button>
+                                <button onClick={(e) => createAndSendMessageToGroup(e) } className={utilStyles.ActionButtonAdd}>Envoyer</button>
+                        </div>
+                    </div>
                 </div>
-                
-                <div className={styles.rowActionButton}>
-                    <button onClick={(e) => cancelCreateGroup(e) } className={`${utilStyles.ActionButtonCancel}`}>Annuler</button>
-                    <button onClick={(e) => createAndSendMessageToGroup(e) } className={utilStyles.ActionButtonAdd}>Envoyer</button>
-                </div>
-            </div>
+            }  
         </Layout>
     )
 
