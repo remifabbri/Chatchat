@@ -51,7 +51,6 @@ export default function MessageConv({parentCallback, props}) {
 
     const sendMessage = (e) => {
         e.preventDefault();
-
         if(newMessage !== ""){
             fire
             .firestore()
