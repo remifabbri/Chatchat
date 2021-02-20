@@ -439,7 +439,7 @@ $gray: #323232;
   left: 0; 
   right: 0;
   @include BgColorBlur_Dft;
-  z-index: 10000000000000; 
+  z-index: 1000; 
   
 
   .blockModalGetCat{

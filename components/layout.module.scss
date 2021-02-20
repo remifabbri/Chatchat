@@ -64,7 +64,7 @@
     align-items: center;
     height: 50px;
     width: 100%;
-    z-index: 10000000;
+    z-index: 100;
 
     .navRight{
         display: flex; 
@@ -335,7 +335,7 @@
     height: calc(100% - 50px);
     width: 50px;
     // @include BgColor_Dft;
-    z-index: 1000000000000000000000;
+    
 
     .itemsNav{
         height: 50px; 
