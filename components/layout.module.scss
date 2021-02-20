@@ -383,11 +383,20 @@
     padding-right: 10px;
     color: $fontColor;
 
+    @media (max-width:400){
+        width:250px;
+    }
+
 
     span{
         font-size: 16px;
         font-weight: 600px;
         margin-right: 25px;
+        text-align: right;
+        @media (max-width:400){
+            text-align: center;
+            font-size: 12px;
+        }
     }
 
     img{

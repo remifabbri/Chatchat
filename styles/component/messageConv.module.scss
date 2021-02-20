@@ -149,6 +149,11 @@
         font-weight: 600px;
         margin-right: 25px;
         color: $fontColor;
+        @media (max-width:400px){
+            font-size: 14px;
+            text-align: center;
+        }
+        
     }
     
 }
@@ -167,6 +172,10 @@
     color: $fontColor;
     background-color: #d9e2e6;
 
+    @media (max-width:400px){
+        width:250px;
+    }
+
     &:hover{
         
         background-color: #9cafb8;
@@ -175,8 +184,13 @@
     span{
         font-size: 16px;
         font-weight: 600px;
-        margin-right: 25px;
+        // margin-right: 25px;
         width: max-content;
+        
+        @media (max-width:400px){
+            font-size: 14px;
+            text-align: center;
+        }
     }
 
     img{
