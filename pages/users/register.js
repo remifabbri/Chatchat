@@ -17,11 +17,23 @@ const Register = () => {
     e.preventDefault();
     if (password !== passConf) {
       setNotification(
-       'Password and password confirmation does not   match'
+       'Mot de passe non identique.'
       )
       setTimeout(() => {
         setNotification('')
-      }, 2000)
+      }, 4000)
+      setPassword('');
+      setPassConf('');
+      return null;
+    }
+
+    if (password.length < 6) {
+      setNotification(
+       'Votre mot de passe est trop court : 6 caractères minimun'
+      )
+      setTimeout(() => {
+        setNotification('')
+      }, 4000)
       setPassword('');
       setPassConf('');
       return null;
@@ -80,6 +92,13 @@ const Register = () => {
           </button>
         </form>
       </div>
+
+      {notification !== "" &&
+        <div className={utilStyles.blockNotification}>
+          <p>{notification}</p>
+        </div>
+      }
+
     </div>
   )
 }

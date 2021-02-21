@@ -61,7 +61,9 @@ export default function MessageConv({parentCallback, props}) {
                 messageText: newMessage,
                 sentAt: fire.firestore.Timestamp.fromDate(new Date()),
                 sentBy: user.uid,
-                userPP : user.pp
+                userPP : user.pp,
+                userName : user.name 
+
             })
             .then(() => {
                 setNewMessage('');
@@ -94,7 +96,7 @@ export default function MessageConv({parentCallback, props}) {
                         :
                         <div className={styles.message}>
                             <img src={m.userPP}></img>
-                            <p>{m.messageText}</p>
+                            <p>{m.userName && <span className={styles.displayName}>{m.userName}</span>}<span>{m.messageText}</span></p>
                         </div>
                     }
                     </div>

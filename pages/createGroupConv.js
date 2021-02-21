@@ -146,7 +146,8 @@ export default function CreateGroupConv({parentCallback, props}) {
                 messageText : message, 
                 sentAt : fire.firestore.Timestamp.fromDate(new Date()),
                 sentBy : user.uid,
-                userPP : user.pp
+                userPP : user.pp,
+                userName: user.name
             })
             .then(() => {
                 userStore.handleChangeIDGroupe(RefidDoc.id);
@@ -189,7 +190,7 @@ export default function CreateGroupConv({parentCallback, props}) {
                             )
                             :
                             users.map( User => 
-                                <button onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
+                                <button key={User.uid} onClick={(e) => addUsersToGroupConv(e, User)} className={styles.itemUser}>
                                     <img src={User.pp}/>
                                     <span>{User.name}</span>
                                 </button>
