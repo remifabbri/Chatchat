@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from './layout.module.scss'
+import styles from '../styles/component/layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import fire from '../config/firebase-config';

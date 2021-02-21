@@ -41,9 +41,6 @@ export default function MessageConv({parentCallback, props}) {
 
     useEffect(() => {
         if( blockConv.current !== null){
-            console.log(blockConv);
-            console.log(blockConv.current.scrollHeight);
-            // blockConv.current.scrollTop = blockConv.current.scrollHeight;
             blockConv.current.scrollIntoView({ behavior: 'smooth', block: "end", inline: "nearest"})
         }
     });
